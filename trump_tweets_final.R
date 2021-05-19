@@ -18,6 +18,21 @@ library(stm)
 library(tokenizers)
 library(ggplot2)
 
+# --- Download data --- # 
+
+data_id <- "1HkirbijbXkWKaT1JyjKWGa6DdwcmxR8s"
+
+out_file <- "data/tweets.zip"
+
+drive_download(
+    as_id(data_id), 
+    path = out_file, 
+    overwrite = TRUE)
+
+unzip(out_file,
+      exdir = "data")
+file.remove(out_file)
+
 
 # --- load the data --- # 
 tweets <- read_csv('data/trump_early_2020_tweets.csv')

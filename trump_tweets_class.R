@@ -17,7 +17,22 @@ library(lubridate)
 library(stm)
 library(tokenizers)
 library(ggplot2)
+library(googledrive)
 
+# --- Download data --- # 
+
+data_id <- "1HkirbijbXkWKaT1JyjKWGa6DdwcmxR8s"
+
+out_file <- "data/tweets.zip"
+
+drive_download(
+    as_id(data_id), 
+    path = out_file, 
+    overwrite = TRUE)
+
+unzip(out_file,
+      exdir = "data")
+file.remove(out_file)
 
 # --- load the data --- # 
 tweets <- #YOUR_CODE
